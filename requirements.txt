@@ -1,0 +1,4 @@
+pytest
+pytest-cov
+pytest-watch
+black
