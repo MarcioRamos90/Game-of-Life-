@@ -47,7 +47,7 @@ def next_generation(grid, len_col, len_row):
                     next_grid[row][col] = LIVE 
                 elif qtd_n == 2 and grid[row][col] == LIVE:
                     next_grid[row][col] = LIVE
-                else:# qtd_n < 2 or qtd_n > 3:
+                elif qtd_n < 2 or qtd_n > 3:
                     next_grid[row][col] = DEAD
         return next_grid
     
