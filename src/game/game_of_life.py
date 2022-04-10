@@ -8,15 +8,15 @@ COLUMNS = 20
 
 
 def initialize(grid):
-    for x in range(len(grid)):
-        for y in range(len(grid[x])):
+    for row in range(len(grid)):
+        for col in range(len(grid[row])):
             value_field = choice([LIVE, DEAD])
-            grid[x][y] = value_field
+            grid[row][col] = value_field
     return grid
 
 
 def makegrid(columns, rows):
-    return [[0] * columns] * rows
+    return [[DEAD for _ in range(columns)] for _ in range(rows)]
 
 
 def qtd_live_neighbors(grid, col, row, len_col, len_row):
@@ -35,13 +35,15 @@ def qtd_live_neighbors(grid, col, row, len_col, len_row):
         raise
 
 
-def next_generation(grid, len_col, len_row):
+def next_generation(grid,**kargs):
         next_grid = [r.copy() for r in grid]
-        for row in range(0, len_row):
-            for col in range(0, len_col):
-                print(dict(row=row, col=col, value=grid[row][col]))
+        qtd_cols = len(grid[0])
+        qtd_rows = len(grid)
+
+        for row in range(0, len(grid)):
+            for col in range(0, len(grid[row])):
                 qtd_n = qtd_live_neighbors(
-                    grid=grid, col=col, row=row, len_col=len_col, len_row=len_row
+                    grid=grid, col=col, row=row, len_col=qtd_cols, len_row=qtd_rows
                 )
                 if qtd_n == 3:
                     next_grid[row][col] = LIVE 

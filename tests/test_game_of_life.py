@@ -1,7 +1,7 @@
 import pytest
 from itertools import chain
 
-from game_of_life import (
+from src.game.game_of_life import (
     LIVE,
     DEAD,
     makegrid,
