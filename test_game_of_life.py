@@ -53,25 +53,57 @@ def test_qtd_live_neighbors_():
     assert result == 3
 
 
-@pytest.mark.skip()
 def test_should_live_if_have_3_neighbors():
     # Arrange
     fake_grid = [
-        [DEAD,LIVE,DEAD,DEAD,LIVE],
+        [DEAD,LIVE,DEAD,DEAD,DEAD],
         [LIVE,DEAD,LIVE,DEAD,DEAD],
         [DEAD,DEAD,DEAD,DEAD,DEAD],
         [DEAD,DEAD,DEAD,DEAD,DEAD],
     ]
 
+    # Action
+    result = next_generation(fake_grid, len_col=5, len_row=4)
+
+    # Assert
+    print(result)
+    assert result[1][1] == LIVE
+
+
+def test_cell_with_two_or_three_live_neighbors_survives():
+   # Arrange
+    fake_grid = [
+        [LIVE,DEAD,DEAD,DEAD],
+        [DEAD,LIVE,DEAD,DEAD],
+        [LIVE,DEAD,DEAD,DEAD],
+        [DEAD,DEAD,DEAD,DEAD],
+    ]
+
+    # Action
+    result = next_generation(fake_grid, len_col=4, len_row=4)
+
+    # Assert
+    assert result[1][1] == LIVE
+
+
+def test_all_other_live_cells_die_in_the_next_generation():
+   # Arrange
+    fake_grid = [
+        [DEAD,DEAD,DEAD,DEAD,DEAD],
+        [LIVE,DEAD,LIVE,DEAD,DEAD],
+        [DEAD,DEAD,DEAD,DEAD,DEAD],
+        [DEAD,DEAD,DEAD,LIVE,DEAD],
+    ]
+
     expected_grid = [
-        [DEAD,LIVE,DEAD,DEAD,LIVE],
-        [LIVE,LIVE,LIVE,DEAD,DEAD],
+        [DEAD,DEAD,DEAD,DEAD,DEAD],
+        [DEAD,DEAD,DEAD,DEAD,DEAD],
         [DEAD,DEAD,DEAD,DEAD,DEAD],
         [DEAD,DEAD,DEAD,DEAD,DEAD],
     ]
 
     # Action
-    result = next_generation(fake_grid)
+    result = next_generation(fake_grid, len_col=5, len_row=4)
 
     # Assert
     assert expected_grid == result
