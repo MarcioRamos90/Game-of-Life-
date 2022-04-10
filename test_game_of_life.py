@@ -53,6 +53,25 @@ def test_qtd_live_neighbors_():
     assert result == 3
 
 
+def test_should_consider_edges_neighbors_():
+    # Arrange
+    fake_grid = [
+        [LIVE,DEAD,DEAD,DEAD],
+        [DEAD,DEAD,DEAD,DEAD],
+        [DEAD,DEAD,DEAD,DEAD],
+        [LIVE,DEAD,DEAD,DEAD],
+        [DEAD,DEAD,DEAD,LIVE],
+    ]
+
+    row, col = 4, 3
+
+    # Action
+    result = qtd_live_neighbors(grid=fake_grid, row=row, col=col, len_row=5, len_col=4)
+
+    # Assert
+    assert result == 2
+
+
 def test_should_live_if_have_3_neighbors():
     # Arrange
     fake_grid = [
