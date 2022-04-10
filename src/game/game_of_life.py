@@ -3,9 +3,6 @@ from random import choice
 LIVE = 1
 DEAD = 0
 
-ROWS = 20
-COLUMNS = 20
-
 
 def initialize(grid):
     for row in range(len(grid)):

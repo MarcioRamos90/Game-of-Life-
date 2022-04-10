@@ -82,7 +82,7 @@ def test_should_live_if_have_3_neighbors():
     ]
 
     # Action
-    result = next_generation(fake_grid, len_col=5, len_row=4)
+    result = next_generation(fake_grid)
 
     # Assert
     print(result)
@@ -99,7 +99,7 @@ def test_cell_with_two_or_three_live_neighbors_survives():
     ]
 
     # Action
-    result = next_generation(fake_grid, len_col=4, len_row=4)
+    result = next_generation(fake_grid)
 
     # Assert
     assert result[1][1] == LIVE
@@ -122,7 +122,7 @@ def test_all_other_live_cells_die_in_the_next_generation():
     ]
 
     # Action
-    result = next_generation(fake_grid, len_col=5, len_row=4)
+    result = next_generation(fake_grid)
 
     # Assert
     assert expected_grid == result

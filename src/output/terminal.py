@@ -4,6 +4,7 @@ import time
 CHAR_LIVE = 'X'
 CHAR_DEAD = ' '
 
+
 def build_grid(grid):
     str_grid = ''
     for row in grid:
@@ -11,6 +12,7 @@ def build_grid(grid):
         for field in row:
             str_grid += CHAR_LIVE if field == LIVE else CHAR_DEAD
     return str_grid
+
 
 def main():
     grid = makegrid(columns=100, rows=50)
